@@ -10,7 +10,6 @@
 <body>
 <div class="app">
 
-  <!-- ── HEADER ── -->
   <div class="app-header">
     <div class="header-icon">
       <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -22,7 +21,6 @@
     <div class="header-badge" id="headerBadge">0 IDs</div>
   </div>
 
-  <!-- ── TAB NAV ── -->
   <div class="tab-nav">
     <button class="tab-btn active" id="tabBtnSearch" onclick="switchTab('search')">
       <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -30,46 +28,31 @@
       <span class="tab-notif hide" id="tabNotifSearch">0</span>
     </button>
     <button class="tab-btn" id="tabBtnData" onclick="switchTab('data')">
-      <svg viewBox="0 0 24 24">
-        <rect x="3" y="3" width="18" height="18" rx="2"/>
-        <line x1="3" y1="9"  x2="21" y2="9"/>
-        <line x1="3" y1="15" x2="21" y2="15"/>
-        <line x1="9" y1="9"  x2="9"  y2="21"/>
-      </svg>
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="9" x2="9" y2="21"/></svg>
       Data
       <span class="tab-notif green hide" id="tabNotifData">0</span>
     </button>
   </div>
 
-  <!-- ══ TAB: BÚSQUEDA ══ -->
   <div class="tab-page active" id="pageSearch">
-
-    <!-- Carga de IDs -->
     <div class="card" id="loadCard">
       <div class="card-header">
         <span class="card-title">📋 Cargar IDs del sistema ML</span>
       </div>
       <div class="card-body">
-
-        <!-- Instrucción -->
         <div class="paste-hint">
           <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>
           Pegá los datos directamente del sistema ML. La app detectará automáticamente el ID, la ruta y si es Voluminoso o Conveyable.
         </div>
-
-        <!-- Área de pegado masivo -->
         <textarea id="bulkInput" class="id-input bulk-textarea"
-          placeholder="Pegá aquí los datos del sistema ML (Tab-separados)&#10;&#10;Ej:&#10;46957832913   F5_AM2   29   A   ...   Voluminoso&#10;46954154431   I3_AM2   10   A   ..."></textarea>
-
+          placeholder="Pegá aquí los datos del sistema ML (Tab-separados)"></textarea>
         <button class="btn-add bulk-btn" onclick="addBulk()">
           <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>
           Detectar y cargar IDs automáticamente
         </button>
-
         <div class="pending-list" id="pendingList">
           <div class="empty-state">Pegá los datos del sistema ML arriba ↑</div>
         </div>
-
         <button class="btn-confirm-load" id="confirmLoadBtn" onclick="confirmLoad()" disabled>
           <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
           Confirmar Carga · Iniciar Búsqueda
@@ -77,27 +60,24 @@
       </div>
     </div>
 
-    <!-- Búsqueda activa -->
     <div class="card" id="searchCard" style="display:none">
       <div class="card-header">
         <span class="card-title">🔍 Búsqueda activa</span>
         <div class="stats-bar">
-          <span class="stat-chip total"   id="statTotal">0 total</span>
-          <span class="stat-chip found"   id="statFound">0 encontrados</span>
+          <span class="stat-chip total" id="statTotal">0 total</span>
+          <span class="stat-chip found" id="statFound">0 encontrados</span>
           <span class="stat-chip pending" id="statPending">0 pendientes</span>
         </div>
       </div>
       <div class="card-body">
-
-        <!-- Scan bar -->
         <div class="scan-bar" id="scanBar">
           <div class="scan-bar-icon">
             <svg viewBox="0 0 24 24">
-              <line x1="6"  y1="2"  x2="6"  y2="6"/>  <line x1="10" y1="2"  x2="10" y2="6"/>
-              <line x1="14" y1="2"  x2="14" y2="6"/>  <line x1="18" y1="2"  x2="18" y2="6"/>
-              <line x1="6"  y1="18" x2="6"  y2="22"/> <line x1="10" y1="18" x2="10" y2="22"/>
-              <line x1="14" y1="18" x2="14" y2="22"/> <line x1="18" y1="18" x2="18" y2="22"/>
-              <line x1="2"  y1="10" x2="22" y2="10"/> <line x1="2"  y1="14" x2="22" y2="14"/>
+              <line x1="6" y1="2" x2="6" y2="6"/><line x1="10" y1="2" x2="10" y2="6"/>
+              <line x1="14" y1="2" x2="14" y2="6"/><line x1="18" y1="2" x2="18" y2="6"/>
+              <line x1="6" y1="18" x2="6" y2="22"/><line x1="10" y1="18" x2="10" y2="22"/>
+              <line x1="14" y1="18" x2="14" y2="22"/><line x1="18" y1="18" x2="18" y2="22"/>
+              <line x1="2" y1="10" x2="22" y2="10"/><line x1="2" y1="14" x2="22" y2="14"/>
             </svg>
           </div>
           <div class="scan-input-wrap">
@@ -109,30 +89,18 @@
           </div>
           <div class="scan-status">● ACTIVO</div>
         </div>
-
         <div class="search-list" id="searchList"></div>
-
-        <!-- Done state -->
         <div class="done-state" id="doneState">
-          <div class="done-icon">
-            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-          </div>
+          <div class="done-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
           <div class="done-title">¡BÚSQUEDA COMPLETADA!</div>
           <div class="done-sub" id="doneSub">Todos los paquetes procesados.</div>
           <button class="btn-reset" onclick="resetApp()">Nueva búsqueda</button>
-          <button class="btn-reset"
-            style="background:var(--bg3);border-color:var(--br2);color:var(--tx2)"
-            onclick="switchTab('data')">
-            Ver datos registrados →
-          </button>
+          <button class="btn-reset" style="background:var(--bg3);border-color:var(--br2);color:var(--tx2)" onclick="switchTab('data')">Ver datos registrados →</button>
         </div>
-
       </div>
     </div>
+  </div>
 
-  </div><!-- /pageSearch -->
-
-  <!-- ══ TAB: DATA ══ -->
   <div class="tab-page" id="pageData">
     <div class="card">
       <div class="card-header">
@@ -140,119 +108,78 @@
         <span style="font-family:var(--mono);font-size:10px;color:var(--tx3)" id="dataSessionInfo">—</span>
       </div>
       <div class="card-body">
-
         <div class="data-kpis">
           <div class="kpi total"><div class="kpi-val" id="kpiTotal">0</div><div class="kpi-lbl">Total</div></div>
           <div class="kpi found"><div class="kpi-val" id="kpiFound">0</div><div class="kpi-lbl">Encontrados</div></div>
-          <div class="kpi notf" ><div class="kpi-val" id="kpiNotf">0</div> <div class="kpi-lbl">No encontrados</div></div>
-          <div class="kpi pct"  ><div class="kpi-val" id="kpiPct">—</div>  <div class="kpi-lbl">% hallado</div></div>
+          <div class="kpi notf"><div class="kpi-val" id="kpiNotf">0</div><div class="kpi-lbl">No encontrados</div></div>
+          <div class="kpi pct"><div class="kpi-val" id="kpiPct">—</div><div class="kpi-lbl">% hallado</div></div>
         </div>
-
         <div class="filter-bar">
-          <button class="filter-btn all active" id="fb-all"   onclick="setFilter('all')">Todos</button>
-          <button class="filter-btn found"       id="fb-found" onclick="setFilter('found')">✓ Encontrados</button>
-          <button class="filter-btn notf"        id="fb-notf"  onclick="setFilter('notf')">✗ No encontrados</button>
+          <button class="filter-btn all active" id="fb-all" onclick="setFilter('all')">Todos</button>
+          <button class="filter-btn found" id="fb-found" onclick="setFilter('found')">✓ Encontrados</button>
+          <button class="filter-btn notf" id="fb-notf" onclick="setFilter('notf')">✗ No encontrados</button>
         </div>
-
         <div class="date-filter-row" id="dateFilterRow">
           <span class="date-filter-label">📅 Fecha</span>
           <input type="date" class="date-input" id="dateFrom" onchange="applyDateFilter()" title="Desde">
           <span class="date-sep">→</span>
-          <input type="date" class="date-input" id="dateTo"   onchange="applyDateFilter()" title="Hasta">
+          <input type="date" class="date-input" id="dateTo" onchange="applyDateFilter()" title="Hasta">
           <div class="date-quick-btns">
-            <button class="btn-dq" id="dq-today"  onclick="quickDate('today')">Hoy</button>
-            <button class="btn-dq" id="dq-ayer"   onclick="quickDate('ayer')">Ayer</button>
+            <button class="btn-dq" id="dq-today" onclick="quickDate('today')">Hoy</button>
+            <button class="btn-dq" id="dq-ayer" onclick="quickDate('ayer')">Ayer</button>
             <button class="btn-dq" id="dq-semana" onclick="quickDate('semana')">Esta semana</button>
             <button class="btn-dq-clear" id="dqClear" style="display:none" onclick="clearDateFilter()">✕ Quitar</button>
           </div>
         </div>
-
         <div class="data-toolbar">
-          <input class="data-search" id="dataSearch" type="text"
-            placeholder="Buscar ID, ruta u observación…"
-            oninput="renderDataList()">
+          <input class="data-search" id="dataSearch" type="text" placeholder="Buscar ID, ruta u observación…" oninput="renderDataList()">
           <button class="btn-export" onclick="exportCSV()">
-            <svg viewBox="0 0 24 24">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="7 10 12 15 17 10"/>
-              <line x1="12" y1="15" x2="12" y2="3"/>
-            </svg>
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             CSV
           </button>
           <button class="btn-clear-data" onclick="clearData()">
-            <svg viewBox="0 0 24 24">
-              <polyline points="3 6 5 6 21 6"/>
-              <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
-              <path d="M10 11v6"/><path d="M14 11v6"/>
-            </svg>
+            <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg>
             Limpiar
           </button>
         </div>
-
         <div class="data-list" id="dataList">
-          <div class="data-empty">
-            <div class="data-empty-icon">📭</div>
-            Aún no hay registros.<br>Las IDs procesadas aparecerán aquí.
-          </div>
+          <div class="data-empty"><div class="data-empty-icon">📭</div>Aún no hay registros.</div>
         </div>
-
       </div>
     </div>
   </div>
 
-</div><!-- /app -->
+</div>
 
-<!-- ── MODAL ── -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal-box">
-    <div class="modal-icon">
-      <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-    </div>
+    <div class="modal-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
     <div class="modal-title">Paquete detectado</div>
-    <div class="modal-id"  id="modalId">—</div>
-    <div class="modal-sub" id="modalSub">Seleccioná dónde fue encontrado el paquete.</div>
-
+    <div class="modal-id" id="modalId">—</div>
+    <div class="modal-sub" id="modalSub">Seleccioná dónde fue encontrado.</div>
     <div class="modal-divider"></div>
-
     <div class="loc-label">📍 ¿Dónde fue encontrado?</div>
     <div class="loc-options">
-      <button class="loc-btn" id="loc-buffer" onclick="selectLocation('buffer')">
-        <span class="loc-emoji">🏗️</span>Bajo el conveyor<br>o buffer
-      </button>
-      <button class="loc-btn" id="loc-same" onclick="selectLocation('same')">
-        <span class="loc-emoji">📦</span>En el mismo<br>contenedor
-      </button>
-      <button class="loc-btn" id="loc-cross" onclick="selectLocation('cross')">
-        <span class="loc-emoji">🔀</span>En contenedor<br>cruzado
-      </button>
-      <button class="loc-btn" id="loc-custom" onclick="selectLocation('custom')">
-        <span class="loc-emoji">✏️</span>Otro<br>contenedor
-      </button>
+      <button class="loc-btn" id="loc-buffer" onclick="selectLocation('buffer')"><span class="loc-emoji">🏗️</span>Bajo el conveyor<br>o buffer</button>
+      <button class="loc-btn" id="loc-same" onclick="selectLocation('same')"><span class="loc-emoji">📦</span>En el mismo<br>contenedor</button>
+      <button class="loc-btn" id="loc-cross" onclick="selectLocation('cross')"><span class="loc-emoji">🔀</span>En contenedor<br>cruzado</button>
+      <button class="loc-btn" id="loc-custom" onclick="selectLocation('custom')"><span class="loc-emoji">✏️</span>Otro<br>contenedor</button>
     </div>
     <div class="loc-container-row" id="customContainerRow">
-      <input class="loc-container-input" id="customContainerInput"
-        placeholder="Ej: CONT-1234 / SB_A3 / B7…"
-        autocomplete="off" oninput="updateConfirmBtn()"
-        onkeydown="if(event.key==='Enter'){confirmFound()}">
+      <input class="loc-container-input" id="customContainerInput" placeholder="Ej: CONT-1234 / SB_A3 / B7…" autocomplete="off" oninput="updateConfirmBtn()" onkeydown="if(event.key==='Enter'){confirmFound()}">
     </div>
-
     <div class="modal-divider"></div>
-
     <div class="obs-row">
       <div class="obs-label">📝 Observación (opcional)</div>
-      <textarea class="obs-textarea" id="obsInput"
-        placeholder="Ej: paquete dañado, etiqueta ilegible…"
-        onkeydown="if(event.key==='Enter'&&event.ctrlKey){confirmFound()}"></textarea>
+      <textarea class="obs-textarea" id="obsInput" placeholder="Ej: paquete dañado, etiqueta ilegible…" onkeydown="if(event.key==='Enter'&&event.ctrlKey){confirmFound()}"></textarea>
     </div>
-
     <div class="modal-actions">
-      <button class="btn-modal-cancel"  onclick="closeModal()">Cancelar</button>
+      <button class="btn-modal-cancel" onclick="closeModal()">Cancelar</button>
       <button class="btn-modal-confirm" id="confirmBtn" onclick="confirmFound()" disabled>✓ Confirmar</button>
     </div>
   </div>
 </div>
 
-<!-- ── TOAST ── -->
 <div class="toast" id="toast">
   <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
   <span id="toastMsg">OK</span>
