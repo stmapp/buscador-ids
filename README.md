@@ -86,3 +86,4 @@ npx serve .
 ## 📝 Licencia
 
 MIT — libre para uso y modificación.
+<!-- v2 -->
