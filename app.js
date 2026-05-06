@@ -37,7 +37,20 @@ function initFirebase() {
     const data = snap.val();
     searchIds = data ? Object.values(data) : [];
     if (searchActive) { renderSearchList(); updateStats(); }
-    if (searchActive && searchIds.length === 0 && dataLog.length > 0) showDoneState();
+  onValue(ref(db, 'session'), snap => {
+    const data = snap.val();
+    if (!data) return;
+    sessionCounter = data.counter || 0;
+    searchActive   = data.active  || false;
+    totalCount     = data.total   || 0;
+    if (searchActive) {
+      document.getElementById('loadCard').style.display   = 'none';
+      document.getElementById('searchCard').style.display = 'block';
+      document.getElementById('scanBar').style.display    = '';
+        renderSearchList();
+        updateStats();
+      }
+  });
   });
   onValue(ref(db, 'dataLog'), snap => {
     const data = snap.val();
