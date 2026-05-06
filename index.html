@@ -95,7 +95,7 @@
           <div class="done-title">¡BÚSQUEDA COMPLETADA!</div>
           <div class="done-sub" id="doneSub">Todos los paquetes procesados.</div>
           <button class="btn-reset" onclick="resetApp()">Nueva búsqueda</button>
-          <button class="btn-reset" style="background:var(--bg3);border-color:var(--br2);color:var(--tx2)" onclick="switchTab('data')">Ver datos registrados →</button>
+          <button class="btn-reset" style="background:var(--bg3);border-color:var(--br2);color:var(--tx2)" onclick="switchTab('data')">Ver datos →</button>
         </div>
       </div>
     </div>
@@ -121,9 +121,9 @@
         </div>
         <div class="date-filter-row" id="dateFilterRow">
           <span class="date-filter-label">📅 Fecha</span>
-          <input type="date" class="date-input" id="dateFrom" onchange="applyDateFilter()" title="Desde">
+          <input type="date" class="date-input" id="dateFrom" onchange="applyDateFilter()">
           <span class="date-sep">→</span>
-          <input type="date" class="date-input" id="dateTo" onchange="applyDateFilter()" title="Hasta">
+          <input type="date" class="date-input" id="dateTo" onchange="applyDateFilter()">
           <div class="date-quick-btns">
             <button class="btn-dq" id="dq-today" onclick="quickDate('today')">Hoy</button>
             <button class="btn-dq" id="dq-ayer" onclick="quickDate('ayer')">Ayer</button>
@@ -185,6 +185,6 @@
   <span id="toastMsg">OK</span>
 </div>
 
-<script src="app.js"></script>
+<script type="module" src="app.js"></script>
 </body>
 </html>
